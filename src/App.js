@@ -3,7 +3,7 @@ import './assets/css/componentes/card.css'
 import Home from "./pages/Home"
 import Sobre from "./pages/Sobre"
 import Page404 from './pages/Pages404';
-
+import Header from './components/Header';
 
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <Router>
+      <Header/> {/* en esta parte se usan los componentes que usaremos de manera global */}
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/sobre' element={<Sobre/>}/>
