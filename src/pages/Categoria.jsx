@@ -7,17 +7,17 @@ import ListPosts from '../components/ListPosts'
 import { useParams, Routes, Route, Link, useResolvedPath } from 'react-router-dom'
 
 const Categoria = () => {
-    // const [subcategorias, setSubcategorias] = useState([])
+    const [subcategorias, setSubcategorias] = useState([])
     const { id } = useParams()
 
-    // const url = useResolvedPath("").pathname
+    const url = useResolvedPath("").pathname
 
 
-    // useEffect(() => {
-    //     buscar(`/categorias?id=${id}`, (response) => {
-    //         setSubcategorias(response[0].subcategorias)
-    //     })
-    // }, [id])
+    useEffect(() => {
+        buscar(`/categorias?id=${id}`, (response) => {
+            setSubcategorias(response[0].subcategorias)
+        })
+    }, [id])
 
 
     return (
@@ -26,7 +26,7 @@ const Categoria = () => {
                 <h2 className='title-page'>Pet Noticias</h2>
             </div>
             <ListCategories />
-            {/* <ul className='category-list container flex'>
+            <ul className='category-list container flex'>
                 {
                     subcategorias.map(subcategoria => (
                         <li className={`category-list__category category-list__category--${id}`} key={subcategoria}>
@@ -36,7 +36,7 @@ const Categoria = () => {
                         </li>
                     ))
                 }
-            </ul> */}
+            </ul>
             <Routes>
                 <Route path='/' element={<ListPosts url={`/posts?categoria=${id}`} />} />
                 {/* <Route path='/:subcategoria' element={<SubCategoria />} /> */}
